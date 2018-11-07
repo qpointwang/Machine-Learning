@@ -3,9 +3,9 @@
 ### [python库下载地址](https://www.lfd.uci.edu/~gohlke/pythonlibs/) 
 ### [readme编写方法](https://blog.csdn.net/u012067966/article/details/50736647)
 
->>利用支持向量机解决手写数字识别的问题：<br>
->>>>首先使用python sklearn.svm库，直接调用库解决问题，然后再看看能都自己边界SVM代码，解决问题，更好的理解支持向量机。<br>
->>>>>>这里提供的mnist的数据集，mnist_train.mat和mnist_train_labels.mat分别为60000个数据和对应的标签，使用如下代码提取出数据：<br>
+利用支持向量机解决手写数字识别的问题：<br>
+首先使用python sklearn.svm库，直接调用库解决问题，然后再看看能都自己编写的SVM代码，解决问题，更好的理解支持向量机。<br>
+这里提供的mnist的数据集，mnist_train.mat和mnist_train_labels.mat分别为60000个数据和对应的标签，使用如下代码提取出数据：<br>
 ```python
 import scipy.io as sio
 all_data = sio.loadmat('mnist_train.mat')['mnist_train'] #60000*784 array
