@@ -61,21 +61,21 @@ def smoSimple(dataMatIn, classLabels, C, toler, maxIter):  # 输入数据，标�
     dataMatrix = mat(dataMatIn);   # 转换成矩阵
     labelMat = mat(classLabels)#.transpose()  # 转换成矩阵，并转置，标记成为一个列向量，每一行和数据矩阵对应
     m,n = shape(dataMatrix)  # 行，列    
-    #print(m,n)
+    print(m,n)
     b = 0;  # 参数b的初始化
     alphas = mat(zeros((m,1)))  # 参数alphas是个list，初始化也是全0，大小等于样本数
     iter = 0  # 当前迭代次数，maxIter是最大迭代次数
     #print(alphas)
-    while (iter < maxIter):  # 当超过最大迭代次数，推出
+    while (iter < maxIter):  # 当超过最大迭代次数，退出
         alphaPairsChanged = 0  # 标记位，记录alpha在该次循环中，有没有优化
         #print(alphaPairsChanged)
         for i in range(m):  # 第i个样本
          #   print(i)
-            fXi = float(multiply(alphas,labelMat).T*(dataMatrix*dataMatrix[i,:].T)) + b  # 第i样本的预测类别
-            #print('第'+str(i)+'个样本fXi   '+str(fXi))
+            fXi = float(multiply(alphas,labelMat).T*(dataMatrix*dataMatrix[i,:].T)) + b  # 第i样本的预测类别  机器学习书 6.12 支持向量机通俗导论（理解SVM的三层境界）.pdf 3.5.6
+            # print('第'+str(i)+'个样本fXi   '+str(fXi))
 
             Ei = fXi - float(labelMat[i])#if checksz if an example violates KKT conditions  # 误差 3.5.21
-            #print('第'+str(i)+'个样本误差Ei   '+str(Ei))
+            # print('第'+str(i)+'个样本误差Ei   '+str(Ei))
             #是否可以继续优化
             if ((labelMat[i]*Ei < -toler) and (alphas[i] < C)) or ((labelMat[i]*Ei > toler) and (alphas[i] > 0)):
                 j = selectJrand(i,m)  # 随机选择第j个样本
