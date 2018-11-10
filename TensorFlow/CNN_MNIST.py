@@ -38,8 +38,6 @@ h_conv1 = tf.nn.relu(conv2d(x_image, W_conv1) + b_conv1)
 h_pool1 = max_pool_2x2(h_conv1)
 
 
-
-
 #第二层卷积[5, 5, 6, 16],通道数目为6，卷积的个数为16
 W_conv2 = weight_variable([5, 5, 6, 16])
 b_conv2 = bias_variable([16])
@@ -65,17 +63,15 @@ h_fc1_drop = tf.nn.dropout(h_fc1, keep_prob)
 # 隐藏层
 W_fc2 = weight_variable([120, 84])
 b_fc2 = bias_variable([84])
-
 y_conv1=tf.nn.relu(tf.matmul(h_fc1_drop, W_fc2) + b_fc2)
 
 
 # 输出层
 W_fc3 = weight_variable([84, 10])
 b_fc3 = bias_variable([10])
-
 y_conv=tf.nn.softmax(tf.matmul(y_conv1, W_fc3) + b_fc3)
 
-
+# 用更加复杂的ADAM优化器来做梯度最速下降,在feed_dict中加入额外的参数keep_prob来控制dropout比例
 cross_entropy = -tf.reduce_sum(y_*tf.log(y_conv))
 train_step = tf.train.AdamOptimizer(1e-4).minimize(cross_entropy)
 correct_prediction = tf.equal(tf.argmax(y_conv,1), tf.argmax(y_,1))
