@@ -21,10 +21,10 @@ def bias_variable(shape):
 with tf.name_scope('input'):
     x = tf.placeholder('float',[None,784],name='x-input')
     y_ = tf.placeholder("float", [None,10],name='y-input')
-
-#with tf.name_scope('input_reshape'):
-#    image_shaped_input = tf.reshape(x, [-1, 28, 28, 1])
-#    tf.summary.image('input', image_shaped_input, 10)
+# 取每次迭代的x的前十个画图
+with tf.name_scope('input_reshape'):
+    image_shaped_input = tf.reshape(x, [-1, 28, 28, 1])
+    tf.summary.image('input', image_shaped_input, 10)
 
 # 第一层隐藏层
 with tf.name_scope('first_layer'):
