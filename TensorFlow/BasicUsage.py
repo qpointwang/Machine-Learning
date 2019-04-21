@@ -56,11 +56,11 @@ with tf.Session() as sess:
     # 运行 'init' op
     sess.run(init_op)
     # 打印 'state' 的初始值
-    print sess.run(state)
+    print(sess.run(state))
     # 运行 op, 更新 'state', 并打印 'state'
     for _ in range(3):
         sess.run(update)
-        print sess.run(state)
+        print(sess.run(state))
 
 # Fetch
 
@@ -82,7 +82,7 @@ input2 = tf.placeholder(tf.float32)
 output = tf.multiply(input1, input2)
 
 with tf.Session() as sess:
-    print sess.run([output], feed_dict={input1:7., input2:2.})
+    print(sess.run([output], feed_dict={input1:7., input2:2.}))
 
 
 
