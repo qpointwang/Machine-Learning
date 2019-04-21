@@ -93,3 +93,6 @@ for i in range(10000):
 print("test accuracy %g"%accuracy.eval(feed_dict={
     x: mnist.test.images, y_: mnist.test.labels}))
 writer.close()
+
+
+# tensorboard --logdir=log
