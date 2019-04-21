@@ -6,7 +6,7 @@ from tensorflow.examples.tutorials.mnist import input_data
 
 sess = tf.InteractiveSession()
 
-file = "./MNIST"
+file = "../MNIST"
 mnist = input_data.read_data_sets(file, one_hot=True)
 
 # 初始化权重
